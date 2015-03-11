@@ -16,6 +16,9 @@ namespace MongoDBApp
             var server = client.GetServer();
             var database = server.GetDatabase(Settings.Default.DatabaseName);
             var t=database.GetStats();
+            var model = new Model() { FirstName = "Jane", LastName = "Doe" };
+            var collection = database.GetCollection<Model>("model");
+            var write=collection.Insert(model);
         }
     }
 }
